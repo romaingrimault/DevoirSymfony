@@ -88,7 +88,7 @@ class HomeController extends AbstractController
         }
         return $this->render('home/formulaire.html.twig',[
             "formulaire"=>$formulaire->createView(),
-            "h1"=>"Modifier le Produit",
+            "h1"=>"Ajouter le Produit",
 
         ]);
 }
@@ -125,7 +125,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/formulaire.html.twig',[
             "formulaire"=>$formulaire->createView(),
-            "h1"=>"Modifier la catégorie".$categorie->getNom(),
+            "h1"=>"Modifier le Produit ".$categorie->getNom(),
 
 
         ]);
