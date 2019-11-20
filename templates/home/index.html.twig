@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Reference</th>
+        <th>EAN</th>
+        <th></th>
+    </tr>
+    {% for prod in categories %}
+        <tr>
+            <td>{{ prod.Nom }}</td>
+            <td>{{ prod.Description }}</td>
+            <td>{{ prod.Reference }}</td>
+            <td>{{ prod.EAN }}</td>
+            <td>
+                <a href="{{ path("produit_modifier",{"id":prod.id}) }}"
+                   class="btn btn-primary">
+                    <i class="far fa-edit"></i>
+                </a>
+                <a href="{{ path("produit_supprimer",{"id":prod.id}) }}"
+                   class="btn btn-primary">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+
+            </td>
+        </tr>
+
+
+    {% endfor %}
+    </table>
+    <a href="{{ path('produit_ajouter') }}" class="btn btn-success">Ajouter un produit</a>
+{% endblock %}
