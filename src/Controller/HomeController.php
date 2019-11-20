@@ -42,17 +42,17 @@ class HomeController extends AbstractController
         $formulaire->handleRequest($request);
 
         if($formulaire->isSubmitted()&& $formulaire->isValid()){
-            $data=$formulaire->getData();
+            /*$data=$formulaire->getData();
             $nbCharactere=strlen($data['EAN']);
            if($nbCharactere==13 || $nbCharactere==14){
-                if(ctype_digit($data['EAN'])){
+                if(ctype_digit($data['EAN'])){*/
                     $em=$this->getDoctrine()->getManager();
 
                     $em->persist($produit);
 
                     $em->flush();
-               }
-            }
+             //  }
+            //}
 
 
 
