@@ -42,21 +42,48 @@ class HomeController extends AbstractController
         $formulaire->handleRequest($request);
 
         if($formulaire->isSubmitted()&& $formulaire->isValid()){
-            /*$data=$formulaire->getData();
-            $nbCharactere=strlen($data['EAN']);
+            $data=$formulaire->get('EAN')->getData();
+            $nbCharactere=strlen($data);
            if($nbCharactere==13 || $nbCharactere==14){
-                if(ctype_digit($data['EAN'])){*/
-                    $em=$this->getDoctrine()->getManager();
+                if(ctype_digit($data)){
+                    /*$total=0;
+                    for ($i=0;$i<$nbCharactere--;$i++){
+                        if($i%2==0){
+                            $total=$total+$data[$i]*3;
+                        }
+                        else{
+                            $total=$total+$data[$i]*1;
+                        }
+                    }
+                    $totalsup=round($total,-1);
+                    var_dump($totalsup);
+                    var_dump($total);
+                    $nbCharactere--;
 
-                    $em->persist($produit);
+                    if($totalsup-$total==$data[$nbCharactere]) {*/
 
-                    $em->flush();
-             //  }
-            //}
+                        $em = $this->getDoctrine()->getManager();
+
+                        $em->persist($produit);
+
+                        $em->flush();
+                        return $this->redirectToRoute("home");
+                    /*}
+                    else{
+                        //return $this->redirectToRoute("home");
+                    }*/
+           }
+                else{
+                    return $this->redirectToRoute("home");
+                }
+          }
+           else{
+               return $this->redirectToRoute("home");
+           }
 
 
 
-            return $this->redirectToRoute("home");
+
 
         }
         return $this->render('home/formulaire.html.twig',[
